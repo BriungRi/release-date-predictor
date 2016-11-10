@@ -1,10 +1,11 @@
 import httplib2
 import mechanize
+import operator
 import calendar
 from bs4 import BeautifulSoup, SoupStrainer
 
 base_url = 'https://www.google.co.in/search?q='
-keyword = 'iphone 8'
+keyword = 'galaxy s8'
 keyword += ' Release Date'
 start = "&start="
 start_val = 0
@@ -32,8 +33,8 @@ while (start_val < 100):
 
 links = set(links)
 
-months = calendar.month_name
-year_dict = {'2016' : 0, '2017' : 0, '2018' : 0, '2019' : 0, '2020' : 0}
+# year_dict = {'2016' : 0, '2017' : 0, '2018' : 0, '2019' : 0, '2020' : 0}
+year_dict = {'2017' : 0, '2018' : 0, '2019' : 0, '2020' : 0}
 month_dict = {'February': 0, 'October': 0, 'March': 0, 'August': 0, 'May': 0, 'January': 0, 'June': 0, 'September': 0, 'April': 0, 'July': 0, 'November': 0}
 for link in links:
     print(link)
@@ -44,3 +45,7 @@ for link in links:
         month_dict[month] += text.count(month)
 print(year_dict)
 print(month_dict)
+
+year = max(year_dict.iteritems(), key=operator.itemgetter(1))[0]
+month = max(month_dict.iteritems(), key=operator.itemgetter(1))[0]
+print(year, month)
