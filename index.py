@@ -45,8 +45,8 @@ def get_release_date(search_for):
             year_dict[year] += text.count(year)
         for month in month_dict.keys():
             month_dict[month] += text.count(month)
-    print(year_dict)
-    print(month_dict)
+    #print(year_dict)
+    #print(month_dict)
 
     year = dict(sorted(year_dict.iteritems(), key=operator.itemgetter(1), reverse=True)[:3])
     month = dict(sorted(month_dict.iteritems(), key=operator.itemgetter(1), reverse=True)[:3])
@@ -55,5 +55,3 @@ def get_release_date(search_for):
     json_data['years'] = year
     json_data['months'] = month
     return json.dumps(json_data)
-
-print(get_release_date('iphone 8'))
