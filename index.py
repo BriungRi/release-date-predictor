@@ -55,3 +55,4 @@ def get_release_date(search_for):
     json_data['years'] = year
     json_data['months'] = month
     return json.dumps(json_data)
+# print(get_release_date('iphone 8'))
